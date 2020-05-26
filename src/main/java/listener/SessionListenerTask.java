@@ -1,13 +1,4 @@
-/*
- * @(#) SessionListenerTask
- * 版权声明 网宿科技, 版权所有 违者必究
- *
- * <br> Copyright:  Copyright (c) 2018
- * <br> Company:网宿科技
- * <br> @author Administrator
- * <br> @description 功能描述
- * <br> 2018-11-13 20:32:51
- */
+
 
 package listener;
 
