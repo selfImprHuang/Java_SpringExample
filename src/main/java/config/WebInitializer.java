@@ -1,5 +1,6 @@
 package config;
 
+import config.refreshEvent.ContextRefreshEvent;
 import filter.FilterDelegator;
 import filter.WelcomeHandlingFilter;
 import org.springframework.util.StringUtils;
@@ -30,11 +31,12 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
-        /**配置和监听器*/
+        // 配置和监听器
         registerServletFilters(servletContext);
         registerListeners(servletContext);
-        // QuartzListener quartzListener = new QuartzListener();
-        // servletContext.addListener(quartzListener.getClass());
+        //刷新事件需要作为监听器在这边配置
+        ContextRefreshEvent refreshEvent = new ContextRefreshEvent();
+         servletContext.addListener(refreshEvent.getClass());
     }
 
 

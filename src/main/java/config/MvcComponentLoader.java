@@ -76,8 +76,8 @@ public class MvcComponentLoader extends WebMvcConfigurerAdapter {
      * @return
      */
     // @Bean
-    // public MyExceptionHandler getExceptionHandler() {
-    //     return new MyExceptionHandler();
+    // public ExceptionResolver getExceptionHandler() {
+    //     return new ExceptionResolver();
     // }
 
     /**
@@ -86,7 +86,7 @@ public class MvcComponentLoader extends WebMvcConfigurerAdapter {
      */
     @Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
-        // exceptionResolvers.add(new MyExceptionHandler());
+        // exceptionResolvers.add(new ExceptionResolver());
         // ...
     }
 
