@@ -1,16 +1,22 @@
 package config;
 
-import config.refreshEvent.ContextRefreshEvent;
-import filter.FilterDelegator;
-import filter.WelcomeHandlingFilter;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.*;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.EventListener;
 import java.util.List;
+
+import javax.servlet.DispatcherType;
+import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+
+import config.refreshEvent.ContextRefreshEvent;
+import filter.FilterDelegator;
+import filter.WelcomeHandlingFilter;
 
 /**
  * Created by com on 2017/7/25.
@@ -36,7 +42,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
         registerListeners(servletContext);
         //刷新事件需要作为监听器在这边配置
         ContextRefreshEvent refreshEvent = new ContextRefreshEvent();
-         servletContext.addListener(refreshEvent.getClass());
+        servletContext.addListener(refreshEvent.getClass());
     }
 
 
@@ -45,8 +51,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
      */
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        // return new Class<?>[]{ContextComponentLoder.class};
-        return new Class<?>[]{};
+        return new Class<?>[]{ContextComponentLoader.class};
     }
 
 
