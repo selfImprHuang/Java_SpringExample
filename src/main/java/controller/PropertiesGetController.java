@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @author  selfimpr
- * @description  测试SpringConfig利用注解来实现properties配置文件的读取
+ * @author 志军
+ * @description 测试SpringCofig利用注解来实现properties配置文件的读取
  * @date  2017/11/11 21:26
  */
 

@@ -4,22 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import service.MainService;
+import service.CommonService;
 
 @Controller
-public class MainController {
+public class AopController {
 
     @Autowired
-    private MainService mainService;
+    private CommonService commonService;
 
     @RequestMapping(value = "/test/aop/param", method = RequestMethod.GET)
     public void testAopParam(){
-        mainService.testAopParam(1);
+        commonService.testAopParam(1);
     }
 
     @RequestMapping(value = "/test/aop", method = RequestMethod.GET)
     public void testAop(){
-        mainService.testAop();
+        commonService.testAop();
     }
 
     @RequestMapping(value = "/test/aop/getClassMessage", method = RequestMethod.GET)

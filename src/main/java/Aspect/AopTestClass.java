@@ -10,11 +10,11 @@ import org.aspectj.lang.annotation.*;
  */
 @Aspect
 public class AopTestClass {
-    @Before("execution(* service.MainServiceImpl.*(..))")
+    @Before("execution(* service.CommonServiceImpl.*(..))")
     public void begin(){
         System.out.println("表演开始");
     }
-    @After("execution(* service.MainServiceImpl.*(..))")
+    @After("execution(* service.CommonServiceImpl.*(..))")
     public void end(){
         System.out.println("表演结束");
     }
@@ -23,11 +23,11 @@ public class AopTestClass {
      * 通过这个声明来实现环绕通知，所谓的环绕通知就是说在在一个方法中规定了类运行几个状态直接的通知事件
      * 可以这样声明来实现不用写一大串的代码
      */
-    @Pointcut("execution(* service.MainServiceImpl.*(..))")
+    @Pointcut("execution(* service.CommonServiceImpl.*(..))")
     public void perform(){}
 
     @Around("perform()")
-    public void  AroundAop(ProceedingJoinPoint proceedingJoinPoint){
+    public Object aroundAop(ProceedingJoinPoint proceedingJoinPoint){
         try{
             System.out.println("我在程序运行之前进行了通知");
             //这个方法代表被切接口进行执行，上面的方法表示之前执行，下面的方法表示之后执行
@@ -37,17 +37,18 @@ public class AopTestClass {
             throwable.printStackTrace();
             System.out.println("运行错误产生的aop通知");
         }
+        return null;
     }
 
     /**
      * 这个是测试有传参的Aop接口环绕
      * @param testNum 入参，根据方法决定入参的数量与类型
      */
-    @Pointcut("execution(* service.MainServiceImpl.testAopParam(int)) && args(testNum)")
+    @Pointcut("execution(* service.CommonServiceImpl.testAopParam(int)) && args(testNum)")
     public void testAopParams(int testNum){
     }
 
-    @After("testAopParams(testNum)")
+    @After(value = "testAopParams(testNum)", argNames = "testNum")
     public void testHasParam(int testNum){
         System.out.println(testNum);
     }

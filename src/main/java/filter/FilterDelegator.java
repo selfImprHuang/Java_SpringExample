@@ -4,6 +4,7 @@ import javax.servlet.Filter;
 
 /**
  * 过滤器委托.(过滤器类)
+ * @author 志军
  * Created by com on 2017/8/21.
  */
 public class FilterDelegator {

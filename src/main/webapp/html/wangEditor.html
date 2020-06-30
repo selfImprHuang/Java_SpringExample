@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>富文本编辑器测试</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        .toolbar {
+            border: 1px solid #ccc;
+        }
+
+        .text {
+            border: 1px solid #ccc;
+            height: 400px;
+        }
+
+        /* table 样式 */
+        table {
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+
+        table td,
+        table th {
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            padding: 3px 5px;
+        }
+
+        table th {
+            border-bottom: 2px solid #ccc;
+            text-align: center;
+        }
+
+        /* blockquote 样式 */
+        blockquote {
+            display: block;
+            border-left: 8px solid #d0e5f2;
+            padding: 5px 10px;
+            margin: 10px 0;
+            line-height: 1.4;
+            font-size: 100%;
+            background-color: #f1f1f1;
+        }
+
+        /* code 样式 */
+        code {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            background-color: #f1f1f1;
+            border-radius: 3px;
+            padding: 3px 5px;
+            margin: 0 3px;
+        }
+
+        pre code {
+            display: block;
+        }
+
+        /* ul ol 样式 */
+        ul, ol {
+            margin: 10px 0 10px 20px;
+        }
+    </style>
+
+</head>
+<body>
+<h3>卧槽。配置这么简单？？？</h3>
+<div id="editor">
+    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+</div>
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<br><br><br>
+<input type="button" value="提交富文本信息" id="sendData">
+<input type="button" value="获取数据和展示" id="getData">
+</body>
+</html>
+
+<script type="text/javascript" src="../js/wangEdit/wangEditor.js"></script>
+<script type="text/javascript" src="../js/jquery/jquery.js"></script>
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/module/myjs/edit.js"></script>

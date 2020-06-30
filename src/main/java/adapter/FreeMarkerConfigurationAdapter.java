@@ -36,19 +36,23 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class FreeMarkerConfigurationAdapter {
 
-    //配置器的类路径
+    /**
+     * 配置器的类路径
+     */
     private String filePath;
-    //默认路径配置
-    private final String defaultPath = "tpl";
 
-    //编码配置
+    /**
+     * 编码配置
+     */
     private String encoding;
-    //默认编码配置
-    private final String defaultEncoding = "UTF-8";
 
-    //错误解决类配置
+    /**
+     * 错误解决类配置
+     */
     private TemplateExceptionHandler exceptionHandler;
-    //默认错误解决类配置
+    /**
+     * 默认错误解决类配置
+     */
     private final TemplateExceptionHandler defaultExceptionHandler = TemplateExceptionHandler.RETHROW_HANDLER;
 
     public FreeMarkerConfigurationAdapter() {
@@ -64,25 +68,21 @@ public class FreeMarkerConfigurationAdapter {
      *
      * 我们使用反射的机制，构造有参数的构造器，作为一个适配器，接受生成继承Configuration的子类对象<br><br>
      * 这里使用了反射的机制，可以了解一下
-     * @param clazz
-     * @param <T>
-     * @return
-     * @throws IOException
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     * @throws NoSuchMethodException
-     * @throws InvocationTargetException
      */
+    @SuppressWarnings("unchecked")
     public <T extends Configuration> T createConfiguration(Class<T> clazz) throws IOException, IllegalAccessException,
         InstantiationException, NoSuchMethodException, InvocationTargetException {
-        Constructor constructor = clazz.getDeclaredConstructor(new Class[]{Version.class});
-        constructor.setAccessible(true); //设置语法检查？
+        Constructor constructor = clazz.getDeclaredConstructor(Version.class);
+        //设置语法检查？
+        constructor.setAccessible(true);
         T t = (T) constructor.newInstance(Configuration.VERSION_2_3_22);
-
-
         // Configuration configuration = new Configuration(Configuration.VERSION_2_3_22);
+        //默认路径配置
+        String defaultPath = "tpl";
         Resource resource1 = new ClassPathResource(defaultPath);
         t.setDirectoryForTemplateLoading(resource1.getFile());
+        //默认编码配置
+        String defaultEncoding = "UTF-8";
         t.setDefaultEncoding(defaultEncoding);
         t.setTemplateExceptionHandler(defaultExceptionHandler);
         if (StringUtils.isNotEmpty(filePath)) {
@@ -97,17 +97,5 @@ public class FreeMarkerConfigurationAdapter {
         }
 
         return t;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public void setEncoding(String encoding) {
-        this.encoding = encoding;
-    }
-
-    public void setExceptionHandler(TemplateExceptionHandler exceptionHandler) {
-        this.exceptionHandler = exceptionHandler;
     }
 }

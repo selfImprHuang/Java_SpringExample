@@ -8,19 +8,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class AnnoExceptionHandler {
 
     /**
-     * @a
-     * @param exception
-     * @return
+     * 可以直接写@ExceptionHandler,不指明异常类，会自动映射
      */
-    @ExceptionHandler(CustomGenericException.class)//可以直接写@ExceptionHandler,不指明异常类，会自动映射
-    public ModelAndView customGenericExceptionHnadler(CustomGenericException exception){ //还可以声明接收其他任意参数
+    @ExceptionHandler(CustomGenericException.class)
+    public ModelAndView customGenericExceptionHnadler(CustomGenericException exception){
+        //还可以声明接收其他任意参数
         ModelAndView modelAndView = new ModelAndView("generic_error");
         modelAndView.addObject("errCode",exception.getErrCode());
         modelAndView.addObject("errMsg",exception.getErrMsg());
         return modelAndView;
     }
 
-    @ExceptionHandler(Exception.class)//可以直接写@EceptionHandler，IOExeption继承于Exception
+    @ExceptionHandler(Exception.class)
     public ModelAndView allExceptionHandler(Exception exception){
         ModelAndView modelAndView = new ModelAndView("generic_error");
         modelAndView.addObject("errMsg", "this is Exception.class");
@@ -34,12 +33,12 @@ public class AnnoExceptionHandler {
         private String errCode;
         private String errMsg;
 
-        public String getErrCode() {
+        String getErrCode() {
             return errCode;
         }
 
 
-        public String getErrMsg() {
+        String getErrMsg() {
             return errMsg;
         }
 

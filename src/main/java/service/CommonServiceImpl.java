@@ -1,7 +1,7 @@
 package service;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -9,8 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author 志军
  */
 @Service
-@Transactional
-public class MainServiceImpl implements MainService {
+public class CommonServiceImpl implements CommonService {
 
 
     @Override
@@ -23,4 +22,11 @@ public class MainServiceImpl implements MainService {
         System.out.println("测试Aop");
     }
 
+
+    @Override
+    @Cacheable(cacheNames = "bm")
+    public String cacheTest() {
+        System.out.println("我是cache，我执行了");
+        return "123444";
+    }
 }

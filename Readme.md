@@ -9,3 +9,16 @@
 新增上下文刷新判断处理类（refreshEvent）、添加HttpSession监听器（listener）
 
 2020/6/3 ：增加Servlet监听器启动Schedule定时任务（SchemeTaskListener）
+
+2020/6/30 : 新增WangEditor使用示例
+
+2020/6/30 ：优化类名、@auther、添加控制层测试
+    CacheController 缓存
+    EncodedController 编码
+    FreemarkerController 模板
+    FullFillTimeValueController 补时间
+    ITextController pdf生成
+    LoginController 登录控制
+    RedisController redis操作
+    RequestLimitController 接口访问频率控制
+    WangEditorController WangEditor编辑器使用

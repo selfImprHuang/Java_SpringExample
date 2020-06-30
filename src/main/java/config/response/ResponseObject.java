@@ -41,7 +41,7 @@ public class ResponseObject<T> {
      */
     private T dataView;
 
-    public ResponseObject(String code, String message, T value) {
+    ResponseObject(String code, String message, T value) {
         this.status = code;
         this.message = message;
         this.dataView = value;

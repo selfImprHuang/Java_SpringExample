@@ -14,8 +14,6 @@ import java.io.IOException;
 
 /**
  * 处理Welcome请求路径的过滤器：在Welcome请求路径的末尾添加/，解决Servlet 3.0+不能以编程方式来配置Welcome页面的问题。
- *
- * @author Kison 2017年7月6日
  */
 public class WelcomeHandlingFilter implements Filter {
 

@@ -1,10 +1,8 @@
 package config;
 
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -46,9 +44,6 @@ import java.util.Properties;
  @EnableTransactionManagement
  @ComponentScan
 public class ContextComponentLoader {
-
-    @Autowired
-    private SqlSessionFactory sqlSessionFactory;
 
     /**
      * 配置数据源

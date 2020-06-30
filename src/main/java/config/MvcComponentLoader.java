@@ -1,7 +1,6 @@
 package config;
 
 import adapter.FreeMarkerConfigurationAdapter;
-import extention.AlarmTplConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import scheduler.JobScheduler;
 import scheduler.adapter.BaseJob;
 import scheduler.adapter.JobAdapter;
+import service.TplService;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -27,6 +27,7 @@ import java.util.Properties;
 
 /**
  * Created by com on 2017/7/25.
+ * @author 志军
  * 配置自动加载注解类
  *
  * 没有代码配置出现的情况
@@ -168,19 +169,17 @@ public class MvcComponentLoader extends WebMvcConfigurerAdapter {
      *                  1.为什么不使用配置的引用，而是新建一份配置，增加内存风险？答：配置信息如果被修改等，可能造成多线程并发问题。新建一份配置信息进行
      *                  temple的生成可能造成内存风险，但是这里运用了cache的方式，减轻了这个风险
      * Date: 2018/5/21/021 9:52
-     * @return 返回类型描述
-     * @throws Exception 异常说明
      */
     @Bean
-    public AlarmTplConfiguration AlarmTplConfiguration() throws IOException, InvocationTargetException,
+    public TplService AlarmTplConfiguration() throws IOException, InvocationTargetException,
         NoSuchMethodException, InstantiationException, IllegalAccessException {
         FreeMarkerConfigurationAdapter freeMarkerConfigurationAdapter = new FreeMarkerConfigurationAdapter();
-        /**
+        /*
          * 这里的思路是:<br>
          *            <b>1.类的有一些参数是可以使用默认设置的，我们这边给他一个使用默认设置的机会</b>
          *            <b>2.类的有一些参数也可以是用户来配置的，所以说这里我们提供了一个设置参数的机会</b>
          */
-        return freeMarkerConfigurationAdapter.createConfiguration(AlarmTplConfiguration.class);
+        return freeMarkerConfigurationAdapter.createConfiguration(TplService.class);
     }
 
 

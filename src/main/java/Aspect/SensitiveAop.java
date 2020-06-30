@@ -29,6 +29,7 @@ public class SensitiveAop {
      */
    @Around("execution(* controller.*.*(..)) && @annotation(sensitive)")
     public Object getClassMessage(ProceedingJoinPoint pjp, Sensitive sensitive) {
-
-   }
+       //todo 这边需要怎么去处理，我还没想清楚
+       return null;
+    }
 }

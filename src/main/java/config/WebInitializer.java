@@ -19,18 +19,17 @@ import filter.FilterDelegator;
 import filter.WelcomeHandlingFilter;
 
 /**
+ *
  * Created by com on 2017/7/25.
  * <p>
- * 相当于web.xml的加载配置
- */
-
-/***
+ *  相当于web.xml的加载配置
+ * </p>
  *    FilterRegistration.Dynamic welcomePagFilter = container.addFilter("WelcomePagFilter", new WelcomePagFilter());
  *    welcomePagFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
  *    上述是配置过滤器作用的请求.
  *    这里已经包装起来了
+ * @author 志军
  */
-
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 

@@ -52,8 +52,6 @@ public class RequestLimitAspect {
             if (body.getDelayClickUtilTIme() != null && DateTimeUtil.getNowSeconds() - body.getDelayClickUtilTIme() <= limit.waits()) {
                 System.out.println("超过点击次数，还需要等待" + (limit.waits() - (DateTimeUtil.getNowSeconds() - body.getDelayClickUtilTIme())) + "秒");
                 throw new RequestLimitException("超过点击次数，还需要等待" + (limit.waits() - (DateTimeUtil.getNowSeconds() - body.getDelayClickUtilTIme())) + "秒");
-            }else{
-
             }
 
             //如果最后一次点击在规定时间之内并且点击次数超过规定点击次数.进入延迟点击
